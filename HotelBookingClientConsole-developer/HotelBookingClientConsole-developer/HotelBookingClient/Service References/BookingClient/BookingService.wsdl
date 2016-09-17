@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BookingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/HotelBooking.bookingService" />
+      <xs:element name="BookRoom">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HotelBooking.bookingService" minOccurs="0" name="bookingDetails" nillable="true" type="q1:BookingDeatils" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="BookRoomResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HotelBooking.bookingService" minOccurs="0" name="BookRoomResult" nillable="true" type="q2:BookingStatus" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancleBooking">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HotelBooking.bookingService" minOccurs="0" name="bookingDetails" nillable="true" type="q3:BookingDeatils" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancleBookingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HotelBooking.bookingService" minOccurs="0" name="CancleBookingResult" nillable="true" type="q4:BookingStatus" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HotelBooking.bookingService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HotelBooking.bookingService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/HotelBooking.customer" />
+      <xs:complexType name="BookingDeatils">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BookingDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BookingId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CheckInDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CheckOutDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoomId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TotalPrice" type="xs:double" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HotelBooking.customer" minOccurs="0" name="customer" nillable="true" type="q1:Customer" />
+          <xs:element minOccurs="0" name="numberOfGuests" type="xs:int" />
+          <xs:element minOccurs="0" name="numberOfRooms" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BookingDeatils" nillable="true" type="tns:BookingDeatils" />
+      <xs:complexType name="BookingStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bookingDetails" nillable="true" type="tns:BookingDeatils" />
+          <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BookingStatus" nillable="true" type="tns:BookingStatus" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HotelBooking.customer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HotelBooking.customer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="Customer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="emailId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Customer" nillable="true" type="tns:Customer" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IBookingService_BookRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookRoom" />
+  </wsdl:message>
+  <wsdl:message name="IBookingService_BookRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBookingService_CancleBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancleBooking" />
+  </wsdl:message>
+  <wsdl:message name="IBookingService_CancleBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancleBookingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBookingService">
+    <wsdl:operation name="BookRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBookingService/BookRoom" message="tns:IBookingService_BookRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBookingService/BookRoomResponse" message="tns:IBookingService_BookRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancleBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBookingService/CancleBooking" message="tns:IBookingService_CancleBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBookingService/CancleBookingResponse" message="tns:IBookingService_CancleBooking_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IBookingService" type="tns:IBookingService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BookRoom">
+      <soap:operation soapAction="http://tempuri.org/IBookingService/BookRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancleBooking">
+      <soap:operation soapAction="http://tempuri.org/IBookingService/CancleBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BookingService">
+    <wsdl:port name="BasicHttpBinding_IBookingService" binding="tns:BasicHttpBinding_IBookingService">
+      <soap:address location="http://localhost:55519/bookingService/BookingService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
